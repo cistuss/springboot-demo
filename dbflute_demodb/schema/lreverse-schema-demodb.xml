@@ -8,6 +8,8 @@
             pkPosition="1" primaryKey="true" required="true" size="10" type="INTEGER"/>
         <column comment="" dbType="VARCHAR" javaType="String"
             name="user_name" required="true" size="32" type="VARCHAR"/>
+        <column comment="" dbType="VARCHAR" javaType="String"
+            name="password" required="true" size="64" type="VARCHAR"/>
         <column comment="" dbType="TIMESTAMP"
             javaType="java.time.LocalDateTime" name="create_datetime"
             required="true" size="19" type="TIMESTAMP"/>
