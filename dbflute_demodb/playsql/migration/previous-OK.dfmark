@@ -1,0 +1,10 @@
+[Saved Previous Resources]: 2020/06/18 00:12:15
+playsql/migration/previous/replace-schema.sql
+playsql/migration/previous/take-finally.sql
+playsql/migration/previous/data/ut/reversexls/backup/latest-data.zip
+playsql/migration/previous/data/ut/reversexls/xls-data-result.dfmark
+playsql/migration/previous/data/ut/reversexls/reverse-data-result.dfmark
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_01_1-user.tsv
+(6 files)
+
+Look at the log for detail.
