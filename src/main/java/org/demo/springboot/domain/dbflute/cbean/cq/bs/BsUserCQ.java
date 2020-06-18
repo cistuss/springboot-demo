@@ -113,6 +113,26 @@ public class BsUserCQ extends AbstractBsUserCQ {
      */
     public BsUserCQ addOrderBy_UserName_Desc() { regOBD("user_name"); return this; }
 
+    protected ConditionValue _password;
+    public ConditionValue xdfgetPassword()
+    { if (_password == null) { _password = nCV(); }
+      return _password; }
+    protected ConditionValue xgetCValuePassword() { return xdfgetPassword(); }
+
+    /**
+     * Add order-by as ascend. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @return this. (NotNull)
+     */
+    public BsUserCQ addOrderBy_Password_Asc() { regOBA("password"); return this; }
+
+    /**
+     * Add order-by as descend. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @return this. (NotNull)
+     */
+    public BsUserCQ addOrderBy_Password_Desc() { regOBD("password"); return this; }
+
     protected ConditionValue _createDatetime;
     public ConditionValue xdfgetCreateDatetime()
     { if (_createDatetime == null) { _createDatetime = nCV(); }

@@ -13,7 +13,7 @@ import org.demo.springboot.domain.dbflute.exentity.*;
  *     user_id
  *
  * [column]
- *     user_id, user_name, create_datetime, update_datetime
+ *     user_id, user_name, password, create_datetime, update_datetime
  *
  * [sequence]
  *     

@@ -297,6 +297,11 @@ public class BsUserCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnUserName() { return doColumn("user_name"); }
         /**
+         * password: {NotNull, VARCHAR(64)}
+         * @return The information object of specified column. (NotNull)
+         */
+        public SpecifiedColumn columnPassword() { return doColumn("password"); }
+        /**
          * create_datetime: {NotNull, TIMESTAMP(19)}
          * @return The information object of specified column. (NotNull)
          */

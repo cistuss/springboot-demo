@@ -17,7 +17,7 @@ import org.demo.springboot.domain.dbflute.exentity.*;
  *     user_id
  *
  * [column]
- *     user_id, user_name, create_datetime, update_datetime
+ *     user_id, user_name, password, create_datetime, update_datetime
  *
  * [sequence]
  *     
@@ -44,10 +44,12 @@ import org.demo.springboot.domain.dbflute.exentity.*;
  * /= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  * Integer userId = entity.getUserId();
  * String userName = entity.getUserName();
+ * String password = entity.getPassword();
  * java.time.LocalDateTime createDatetime = entity.getCreateDatetime();
  * java.time.LocalDateTime updateDatetime = entity.getUpdateDatetime();
  * entity.setUserId(userId);
  * entity.setUserName(userName);
+ * entity.setPassword(password);
  * entity.setCreateDatetime(createDatetime);
  * entity.setUpdateDatetime(updateDatetime);
  * = = = = = = = = = =/
@@ -70,6 +72,9 @@ public abstract class BsUser extends AbstractEntity implements DomainEntity, Ent
 
     /** user_name: {NotNull, VARCHAR(32)} */
     protected String _userName;
+
+    /** password: {NotNull, VARCHAR(64)} */
+    protected String _password;
 
     /** create_datetime: {NotNull, TIMESTAMP(19)} */
     protected java.time.LocalDateTime _createDatetime;
@@ -141,6 +146,7 @@ public abstract class BsUser extends AbstractEntity implements DomainEntity, Ent
         StringBuilder sb = new StringBuilder();
         sb.append(dm).append(xfND(_userId));
         sb.append(dm).append(xfND(_userName));
+        sb.append(dm).append(xfND(_password));
         sb.append(dm).append(xfND(_createDatetime));
         sb.append(dm).append(xfND(_updateDatetime));
         if (sb.length() > dm.length()) {
@@ -197,6 +203,24 @@ public abstract class BsUser extends AbstractEntity implements DomainEntity, Ent
     public void setUserName(String userName) {
         registerModifiedProperty("userName");
         _userName = userName;
+    }
+
+    /**
+     * [get] password: {NotNull, VARCHAR(64)} <br>
+     * @return The value of the column 'password'. (basically NotNull if selected: for the constraint)
+     */
+    public String getPassword() {
+        checkSpecifiedProperty("password");
+        return _password;
+    }
+
+    /**
+     * [set] password: {NotNull, VARCHAR(64)} <br>
+     * @param password The value of the column 'password'. (basically NotNull if update: for the constraint)
+     */
+    public void setPassword(String password) {
+        registerModifiedProperty("password");
+        _password = password;
     }
 
     /**

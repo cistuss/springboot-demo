@@ -308,6 +308,141 @@ public abstract class AbstractBsUserCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueUserName();
 
     /**
+     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param password The value of password as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setPassword_Equal(String password) {
+        doSetPassword_Equal(fRES(password));
+    }
+
+    protected void doSetPassword_Equal(String password) {
+        regPassword(CK_EQ, password);
+    }
+
+    /**
+     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param password The value of password as notEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setPassword_NotEqual(String password) {
+        doSetPassword_NotEqual(fRES(password));
+    }
+
+    protected void doSetPassword_NotEqual(String password) {
+        regPassword(CK_NES, password);
+    }
+
+    /**
+     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param password The value of password as greaterThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setPassword_GreaterThan(String password) {
+        regPassword(CK_GT, fRES(password));
+    }
+
+    /**
+     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param password The value of password as lessThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setPassword_LessThan(String password) {
+        regPassword(CK_LT, fRES(password));
+    }
+
+    /**
+     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param password The value of password as greaterEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setPassword_GreaterEqual(String password) {
+        regPassword(CK_GE, fRES(password));
+    }
+
+    /**
+     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param password The value of password as lessEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setPassword_LessEqual(String password) {
+        regPassword(CK_LE, fRES(password));
+    }
+
+    /**
+     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param passwordList The collection of password as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setPassword_InScope(Collection<String> passwordList) {
+        doSetPassword_InScope(passwordList);
+    }
+
+    protected void doSetPassword_InScope(Collection<String> passwordList) {
+        regINS(CK_INS, cTL(passwordList), xgetCValuePassword(), "password");
+    }
+
+    /**
+     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param passwordList The collection of password as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setPassword_NotInScope(Collection<String> passwordList) {
+        doSetPassword_NotInScope(passwordList);
+    }
+
+    protected void doSetPassword_NotInScope(Collection<String> passwordList) {
+        regINS(CK_NINS, cTL(passwordList), xgetCValuePassword(), "password");
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * password: {NotNull, VARCHAR(64)} <br>
+     * <pre>e.g. setPassword_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param password The value of password as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setPassword_LikeSearch(String password, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setPassword_LikeSearch(password, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * password: {NotNull, VARCHAR(64)} <br>
+     * <pre>e.g. setPassword_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
+     * @param password The value of password as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param likeSearchOption The option of like-search. (NotNull)
+     */
+    protected void setPassword_LikeSearch(String password, LikeSearchOption likeSearchOption) {
+        regLSQ(CK_LS, fRES(password), xgetCValuePassword(), "password", likeSearchOption);
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param password The value of password as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setPassword_NotLikeSearch(String password, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setPassword_NotLikeSearch(password, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * password: {NotNull, VARCHAR(64)}
+     * @param password The value of password as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param likeSearchOption The option of not-like-search. (NotNull)
+     */
+    protected void setPassword_NotLikeSearch(String password, LikeSearchOption likeSearchOption) {
+        regLSQ(CK_NLS, fRES(password), xgetCValuePassword(), "password", likeSearchOption);
+    }
+
+    protected void regPassword(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValuePassword(), "password"); }
+    protected abstract ConditionValue xgetCValuePassword();
+
+    /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * create_datetime: {NotNull, TIMESTAMP(19)}
      * @param createDatetime The value of createDatetime as equal. (basically NotNull: error as default, or no condition as option)

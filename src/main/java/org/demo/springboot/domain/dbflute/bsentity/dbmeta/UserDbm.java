@@ -44,6 +44,7 @@ public class UserDbm extends AbstractDBMeta {
     protected void xsetupEpg() {
         setupEpg(_epgMap, et -> ((User)et).getUserId(), (et, vl) -> ((User)et).setUserId(cti(vl)), "userId");
         setupEpg(_epgMap, et -> ((User)et).getUserName(), (et, vl) -> ((User)et).setUserName((String)vl), "userName");
+        setupEpg(_epgMap, et -> ((User)et).getPassword(), (et, vl) -> ((User)et).setPassword((String)vl), "password");
         setupEpg(_epgMap, et -> ((User)et).getCreateDatetime(), (et, vl) -> ((User)et).setCreateDatetime(ctldt(vl)), "createDatetime");
         setupEpg(_epgMap, et -> ((User)et).getUpdateDatetime(), (et, vl) -> ((User)et).setUpdateDatetime(ctldt(vl)), "updateDatetime");
     }
@@ -68,6 +69,7 @@ public class UserDbm extends AbstractDBMeta {
     //                                                                         ===========
     protected final ColumnInfo _columnUserId = cci("user_id", "user_id", null, null, Integer.class, "userId", null, true, true, true, "INT", 10, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnUserName = cci("user_name", "user_name", null, null, String.class, "userName", null, false, false, true, "VARCHAR", 32, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnPassword = cci("password", "password", null, null, String.class, "password", null, false, false, true, "VARCHAR", 64, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnCreateDatetime = cci("create_datetime", "create_datetime", null, null, java.time.LocalDateTime.class, "createDatetime", null, false, false, true, "TIMESTAMP", 19, 0, null, null, true, null, null, null, null, null, false);
     protected final ColumnInfo _columnUpdateDatetime = cci("update_datetime", "update_datetime", null, null, java.time.LocalDateTime.class, "updateDatetime", null, false, false, true, "TIMESTAMP", 19, 0, null, null, true, null, null, null, null, null, false);
 
@@ -81,6 +83,11 @@ public class UserDbm extends AbstractDBMeta {
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnUserName() { return _columnUserName; }
+    /**
+     * password: {NotNull, VARCHAR(64)}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnPassword() { return _columnPassword; }
     /**
      * create_datetime: {NotNull, TIMESTAMP(19)}
      * @return The information object of specified column. (NotNull)
@@ -96,6 +103,7 @@ public class UserDbm extends AbstractDBMeta {
         List<ColumnInfo> ls = newArrayList();
         ls.add(columnUserId());
         ls.add(columnUserName());
+        ls.add(columnPassword());
         ls.add(columnCreateDatetime());
         ls.add(columnUpdateDatetime());
         return ls;

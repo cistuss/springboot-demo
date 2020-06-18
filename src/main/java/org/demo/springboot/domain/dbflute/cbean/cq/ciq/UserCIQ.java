@@ -63,6 +63,7 @@ public class UserCIQ extends AbstractBsUserCQ {
     //                                                                ====================
     protected ConditionValue xgetCValueUserId() { return _myCQ.xdfgetUserId(); }
     protected ConditionValue xgetCValueUserName() { return _myCQ.xdfgetUserName(); }
+    protected ConditionValue xgetCValuePassword() { return _myCQ.xdfgetPassword(); }
     protected ConditionValue xgetCValueCreateDatetime() { return _myCQ.xdfgetCreateDatetime(); }
     protected ConditionValue xgetCValueUpdateDatetime() { return _myCQ.xdfgetUpdateDatetime(); }
     protected Map<String, Object> xfindFixedConditionDynamicParameterMap(String pp) { return null; }
