@@ -3,8 +3,38 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Top page</title>
+	<style>
+		body {
+			padding: 0px;
+			margin: 0px;
+		}
+		.header {
+			width: 100%;
+			background-color: #aaaaff;
+		}
+		.user-box {
+			padding: 3px;
+		}
+	</style>
 </head>
 <body>
-	<h1>Top page</h1>
+	<header class="header">
+		<div class="user-box" th:if="${user} != null">
+			<span>[[${user.username}]]</span>
+			<form th:action="@{/signout}" method="post">
+				<input type="submit" value="signout" />
+			</form>
+		</div>
+		<div class="user-box" th:if="${user} == null">
+			<form th:action="@{/signin}" method="post">
+				<input type="submit" value="signin" />
+			</form>
+			<form th:action="@{/signin}" method="post">
+				sign up
+			</form>
+		</div>
+	</header>
+	<h1>This is Springboot-demo</h1>
+	
 </body>
 </html>

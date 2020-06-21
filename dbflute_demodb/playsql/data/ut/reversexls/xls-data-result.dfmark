@@ -7,4 +7,6 @@
 data-directory: playsql/data/ut/reversexls
 
 [cyclic-data-01-misc.xls]
+  thread (0)
   user (0)
+  comment (0)

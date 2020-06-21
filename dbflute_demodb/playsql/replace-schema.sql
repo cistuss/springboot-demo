@@ -17,3 +17,18 @@ create table thread(
     update_datetime timestamp not null,
     primary key(thread_id)
 );
+
+create table comment (
+    comment_id int auto_increment not null,
+    comennt_connect varchar(256),
+    thread_id int not null,
+    user_id int not null,
+
+    create_datetime timestamp not null,
+    update_datetime timestamp not null,
+
+    primary key(comment_id)
+);
+
+alter table comment add constraint fk_user_user_id foreign key(user_id) references user(user_id);
+alter table comment add constraint fk_thread_thread_id foreign key(thread_id) references thread(thread_id);
